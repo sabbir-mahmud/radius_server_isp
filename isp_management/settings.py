@@ -32,9 +32,11 @@ INSTALLED_APPS = [
     # Custom applications
     'apps.users.apps.UsersConfig',
     'apps.clients',
+    'apps.employ',
     'apps.packages',
     'apps.onu',
     'apps.pop',
+    'apps.warehouse'
 
 ]
 

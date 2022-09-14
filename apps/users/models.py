@@ -38,6 +38,8 @@ class User(AbstractBaseUser):
  first_name = models.CharField(max_length=245)
  last_name = models.CharField(max_length=245)
  gender = models.CharField(max_length=245)
+ owner = models.BooleanField(default=False)
+ employs = models.BooleanField(default=False)
  staff = models.BooleanField(default=False)
  admin = models.BooleanField(default=False)
  created = models.DateTimeField(auto_now_add=True)
