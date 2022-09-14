@@ -30,7 +30,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Custom applications
-    'apps.users.apps.UsersConfig'
+    'apps.users.apps.UsersConfig',
+    'apps.clients',
+    'apps.packages',
+    'apps.onu',
+    'apps.pop',
+
 ]
 
 # user model
