@@ -32,7 +32,7 @@
       <a class="nav-link" href="{% url 'client:clients' %}">Clients</a>
      </li>
      <li class="nav-item">
-      <a class="nav-link" href="#">Warehouse</a>
+      <a class="nav-link" href="{% url 'warehouse:warehouse' %}">Warehouse</a>
      </li>
      <li class="nav-item">
       <a class="nav-link" href="#">Onu</a>
@@ -67,7 +67,7 @@
  <script>
   let wrapper = document.getElementById('message-modal-wrapper');
   let btn = document.getElementById('message-modal');
-  btn.addEventListener('click',(event){
+  btn.addEventListener('click',(event)=>{
    wrapper.style.display = 'none'
   })
  </script>

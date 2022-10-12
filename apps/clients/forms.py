@@ -9,3 +9,4 @@ class ClientsForm(forms.ModelForm):
  class Meta:
   model = Clients
   fields = '__all__'
+  exclude = ['client_id']

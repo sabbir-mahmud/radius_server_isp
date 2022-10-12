@@ -1,0 +1,14 @@
+{% extends 'warehouse/warehouse.html' %}
+{% block title %}warehouse form{% endblock title %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<section>
+ <form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input class='btn btn-primary mt-3' type="submit" value="save">
+ </form>
+ 
+</section>
+{% endblock content %}
