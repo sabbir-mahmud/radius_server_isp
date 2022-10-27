@@ -43,15 +43,6 @@ def createClients(request):
   }
   return render(request,'clients/create_client.html',context)
 
-
-# class CreateClients(SuccessMessageMixin,CreateView):
-#  form_class = ClientsForm
-#  template_name = 'clients/create_client.html'
-#  success_url = '/clients'
-#  success_message ='new clients created'
-#  error_message ='clients not created'
- 
-
 # clients Update View
 class UpdateClients(SuccessMessageMixin,UpdateView):
  model = Clients

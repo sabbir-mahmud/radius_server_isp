@@ -38,6 +38,12 @@
       <a class="nav-link" href="{% url 'onu:onus' %}">Onu</a>
      </li>
      <li class="nav-item">
+      <a class="nav-link" href="{% url 'pop:pop' %}">Pop</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="{% url 'tasks:tasks' %}">Tasks</a>
+     </li>
+     <li class="nav-item">
       <a class="nav-link" href="#">profile</a>
      </li>
     </ul>
@@ -49,9 +55,11 @@
 
  {% if messages %}
  {% for message in messages %}
- <div class='message-modal p-5' id='message-modal-wrapper'>
+ <div class='message-modal' id='message-modal-wrapper'>
+  <div class="p-3 d-flex justify-content-between align-content-center align-items-center">   
   <li>{{message}}</li>
-  <button class="btn btn-primary mt-5" id="message-modal">ok</button>
+  <button class="btn btn-primary" id="message-modal">ok</button>
+  </div>
  </div>
  {% endfor %}
  {% endif %}

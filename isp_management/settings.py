@@ -33,12 +33,14 @@ INSTALLED_APPS = [
     'django_filters',
     # Custom applications
     'apps.users.apps.UsersConfig',
-    'apps.clients',
     'apps.employ',
     'apps.packages',
     'apps.onu',
     'apps.pop',
-    'apps.warehouse'
+    'apps.warehouse',
+    'apps.tasks',
+    'apps.clients',
+    'apps.accountants',
 
 ]
 

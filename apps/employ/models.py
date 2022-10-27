@@ -15,8 +15,6 @@ class EmployCategory(models.Model):
 
 
 # Employ models
-# Worker models
-
 
 class Employ(models.Model):
  choices_select = (('active', 'active'), ('inactive', 'inactive'))

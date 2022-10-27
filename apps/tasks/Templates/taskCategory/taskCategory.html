@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}tasks details{% endblock title %}
+{% block extraHead %}
+<link rel="stylesheet" href="{% static 'tasks/tasks.css' %}">
+{% endblock extraHead %}
+{% block content %}
+<table class="table table-striped table-hover rounded">
+
+ <thead class="table-dark">
+  <tr>
+   <th colspan="4">
+    <a class='text-white' href={% url 'tasks:create-category' %}>Create</a>
+   </th>
+  </tr>
+  <tr>
+   <th scope="col">#</th>
+   <th scope="col">name</th>   
+   <th scope="col">update</th>
+   <th scope="col">delete</th>
+  </tr>
+ </thead>
+ <tbody>
+  {% for category in taskCategory %}
+  <tr>
+   <th scope="row">{{forloop.counter}}</th>
+   <td>{{category.name}}</td>
+   <td><a href={% url 'tasks:update-category' category.id %}>update</a></td>
+   <td><a href={% url 'tasks:delete-category' category.id %}>delete</a></td>
+  </tr>
+  {% endfor %}
+
+ </tbody>
+</table>
+
+{% if taskCategory.has_previous %}
+<a class="btn prev-btn btn-success mb-3" href="?p={{taskCategory.previous_page_number}}">previous</a>
+{% endif %}
+{{taskCategory.number}}
+{% if taskCategory.has_next %}
+<a class="btn next-btn btn-success mb-3" href="?p={{taskCategory.next_page_number}}">next</a>
+{% endif %}
+
+
+{% endblock content %}
