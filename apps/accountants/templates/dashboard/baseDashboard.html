@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}dashboard{% endblock title %}
+{% block content %}
+<section>
+ <div class="row">
+  <div class="col-lg-2 mx-1 rounded-1 bg-dark text-white">
+   abc
+
+  </div>
+  <div class="col-lg-8">
+   {% block dashboard %}bcd{% endblock dashboard %}
+  </div>
+ </div>
+</section>
+{% endblock content %}
