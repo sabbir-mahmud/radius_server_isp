@@ -1,3 +1,5 @@
+from enum import unique
+
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -23,7 +25,7 @@ class Employ(models.Model):
  father_name = models.CharField(max_length=245)
  mother_name = models.CharField(max_length=245)
  email = models.EmailField(max_length=100)
- phone = models.CharField(max_length=100, verbose_name='phone')
+ phone = models.CharField(max_length=100, verbose_name='phone', unique=True)
  nid = models.CharField(max_length=100)
  address = models.CharField(max_length=100)
  status = models.CharField(max_length=50, choices=choices_select, default='active')

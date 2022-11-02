@@ -9,3 +9,6 @@ from .models import Owner
 class OwnerDashboard(View):
  def get(self, request):
   return render(request, 'dashboard/baseDashboard.html')
+
+
+

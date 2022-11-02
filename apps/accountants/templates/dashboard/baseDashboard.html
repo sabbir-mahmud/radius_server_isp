@@ -1,13 +1,16 @@
 {% extends 'base.html' %}{% load static %}
 {% block title %}dashboard{% endblock title %}
+{% block extraHead %}
+<link rel="stylesheet" href="{% static 'dashboard/baseDashboard.css' %}">
+{% endblock extraHead %}
 {% block content %}
 <section>
  <div class="row">
-  <div class="col-lg-2 mx-1 rounded-1 bg-dark text-white">
-   abc
+  <div class="col-lg-2 mx-1 bg-dark text-white">
+   <a href="{% url 'dashboard:employ' %}">employ</a>
 
   </div>
-  <div class="col-lg-8">
+  <div class="col-lg-9 dashboard-wrapper">
    {% block dashboard %}bcd{% endblock dashboard %}
   </div>
  </div>
