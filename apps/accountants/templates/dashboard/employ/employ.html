@@ -7,6 +7,7 @@
   <tr>
    <th>
     <a class='text-white' href={% url 'dashboard:employ-create' %}>Create</a>
+    <a class='text-white' href={% url 'dashboard:employ_category' %}>categories</a>
    </th>
    <form class="mb-2 mt-3 mx-2" method="get">
     <th>
@@ -17,7 +18,7 @@
      {{ filters.form.name.label_tag }}
      {{ filters.form.name }}
     </th>
-    <th colspan="6">
+    <th colspan="4">
      <input class="btn btn-primary px-4 ms-3" type="submit" value="search">
     </th>
 
@@ -28,10 +29,8 @@
    <th scope="col">#</th>
    <th scope="col">name</th>
    <th scope="col">phone</th>
-   <th scope="col">nid</th>
    <th scope="col">address</th>
-   <th scope="col">created at</th>
-   <th scope="col">updated at</th>
+   <th scope="col">status</th>
    <th scope="col">update</th>
    <th scope="col">delete</th>
   </tr>
@@ -42,10 +41,8 @@
    <th scope="row">{{forloop.counter}}</th>
    <td>{{employ.name}}</td>
    <td>{{employ.phone}}</td>
-   <td>{{employ.nid}}</td>
    <td>{{employ.address}}</td>
-   <td>{{employ.created}}</td>
-   <td>{{employ.updated}}</td>
+   <td>{{employ.status}}</td>
    <td><a href={% url 'dashboard:employ-update' employ.id %}>update</a></td>
    <td><a href={% url 'dashboard:employ-delete' employ.id %}>delete</a></td>
   </tr>

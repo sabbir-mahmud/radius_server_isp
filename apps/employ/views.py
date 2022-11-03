@@ -49,3 +49,42 @@ class EmployDelete(SuccessMessageMixin,DeleteView):
  success_url = '/dashboard/employ'
  success_message = 'Employ deleted'
  error_message = 'Employ not deleted'
+
+
+# Employ Category Management panel
+class EmployCategoryView(View):
+ def get(self, request):
+  categories = EmployCategory.objects.all()
+  paginator = Paginator(categories, 25)
+  page_number = request.GET.get('paginator')
+  categories = paginator.get_page(page_number)
+  context = {
+   'categories':categories
+  }
+  return render(request, 'dashboard/employ/employ_category.html', context)
+
+# Employ Category Create View
+class EmployCategoryCreate(SuccessMessageMixin,CreateView):
+ form_class = EmployCategoryForm
+ template_name = 'dashboard/employ/employ_category_form.html'
+ success_url = '/dashboard/employ'
+ success_message = 'Employ created'
+ error_message = 'Employ not created'
+
+
+# Employ Category Update View
+class UpdateCategoryEmploy(SuccessMessageMixin,UpdateView):
+ model = EmployCategory
+ form_class = EmployCategoryForm
+ template_name = 'dashboard/employ/employ_category_form.html'
+ success_url = '/dashboard/employ'
+ success_message = 'Employ updated'
+ error_message = 'Employ not updated'
+
+# Employ Category Delete View
+class EmployCategoryDelete(SuccessMessageMixin,DeleteView):
+ model = EmployCategory
+ template_name = 'dashboard/employ/employ_category_delete_form.html'
+ success_url = '/dashboard/employ'
+ success_message = 'Employ deleted'
+ error_message = 'Employ not deleted'

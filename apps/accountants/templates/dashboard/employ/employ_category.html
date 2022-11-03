@@ -1,0 +1,39 @@
+{% extends 'dashboard/baseDashboard.html' %}
+{% block title %}Employ_category Dashboard{% endblock title %}
+{% block dashboard %}
+<table class="table table-striped table-hover rounded-3">
+
+ <thead class="table-dark">
+  <tr>
+   <th colspan="4">
+    <a class='text-white' href={% url 'dashboard:employ_category-create' %}>Create</a>
+   </th>
+  </tr>
+  <tr>
+   <th scope="col">#</th>
+   <th scope="col">name</th>
+   <th scope="col">update</th>
+   <th scope="col">delete</th>
+  </tr>
+ </thead>
+ <tbody>
+  {% for employ_category in categories %}
+  <tr>
+   <th scope="row">{{forloop.counter}}</th>
+   <td>{{employ_category.name}}</td>
+   <td><a href={% url 'dashboard:employ_category-update' employ_category.id %}>update</a></td>
+   <td><a href={% url 'dashboard:employ_category-delete' employ_category.id %}>delete</a></td>
+  </tr>
+  {% endfor %}
+
+ </tbody>
+</table>
+
+{% if categories.has_previous %}
+<a class="btn prev-btn btn-success mb-3" href="?p={{categories.previous_page_number}}">previous</a>
+{% endif %}
+{{categories.number}}
+{% if categories.has_next %}
+<a class="btn next-btn btn-success mb-3" href="?p={{categories.next_page_number}}">next</a>
+{% endif %}
+{% endblock dashboard %}
