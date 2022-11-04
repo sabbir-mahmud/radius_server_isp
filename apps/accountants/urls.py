@@ -9,6 +9,11 @@ app_name = 'dashboard'
 
 urlpatterns = [
  path('', views.OwnerDashboard.as_view(), name='dashboard'),
+ # ? owners urls
+ path('owners', views.OwnerView.as_view(), name='owners'),
+ path('owners/create', views.OwnerCreate.as_view(), name='owner-create'),
+ path('owners/update/<str:pk>', views.OwnerUpdate.as_view(), name='owner-update'),
+ path('owners/delete/<str:pk>', views.OwnerDelete.as_view(), name='owner-delete'),
  # ? employ urls
  path('employ', employ_views.EmployView.as_view(), name='employ'),
  path('employ/create', employ_views.EmployCreate.as_view(), name='employ-create'),

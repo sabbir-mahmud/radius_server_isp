@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}delete {{ object }}{% endblock title %}
+{% block content %}
+
+<form class="delete-form" method="post">
+ {% csrf_token %}
+ <p>Are you sure you want to delete "{{ object }}"?</p>
+ {{ form }}
+ <input class="btn btn-primary" type="submit" value="Confirm">
+ <a class="btn btn-primary" href="{% url 'dashboard:owners' %}">Cancel</a>
+</form>
+
+{% endblock content %}
