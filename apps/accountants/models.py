@@ -17,7 +17,7 @@ class Owner(models.Model):
 # model wrapper
 class Wrapper(models.Model):
  created_at = models.DateTimeField(auto_now_add=True)
- created_at = models.DateTimeField(auto_now=True)
+ updated_at = models.DateTimeField(auto_now=True)
 
 
 # invest model

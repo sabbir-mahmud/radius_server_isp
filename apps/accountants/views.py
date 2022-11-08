@@ -5,9 +5,9 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
-from .filters import OwnerFilter
-from .forms import OwnerForm
-from .models import Owner
+from .filters import EarningFilter, InvestFilter, OwnerFilter
+from .forms import EarningForm, InvestForm, OwnerForm
+from .models import Earning, Invest, Owner
 
 
 # Owner Dashboard
@@ -53,3 +53,79 @@ class OwnerDelete(SuccessMessageMixin,DeleteView):
  success_url = '/dashboard/owners'
  success_message = 'owner deleted'
  error_message = 'owner not deleted'
+
+# invest view
+class InvestView(View):
+  def get(self, request,):
+    invests = Invest.objects.all()
+    filters = InvestFilter(request.GET, queryset=invests)
+    paginator = Paginator(filters.qs, 25)
+    page_number = request.GET.get('paginator')
+    invests = paginator.get_page(page_number)
+    context = {
+      'invests':invests, 'filters':filters
+    }
+    return render(request, 'dashboard/invest/invest.html', context)
+
+# invest create view 
+class InvestCreateView(SuccessMessageMixin,CreateView):
+  form_class = InvestForm
+  template_name = 'dashboard/invest/invest_form.html'
+  success_message = 'Invest Details Created'
+  error_message = 'Invest Details Not Created'
+  success_url = '/dashboard/invest'
+
+# invest update view 
+class InvestUpdateView(SuccessMessageMixin,UpdateView):
+  model = Invest
+  form_class = InvestForm
+  template_name = 'dashboard/invest/invest_form.html'
+  success_message = 'Invest Details updated'
+  error_message = 'Invest Details Not updated'
+  success_url = '/dashboard/invest'
+
+# invest delete view
+class InvestDelete(SuccessMessageMixin,DeleteView):
+  model = Invest
+  template_name = 'dashboard/invest/invest_delete_confirm.html'
+  success_url = '/dashboard/invest'
+  success_message = 'Invests Details Deleted'
+  error_message = 'Invests Details Not Deleted'
+
+# * earn view
+class EarnView(View):
+  def get(self, request,):
+    earnings = Earning.objects.all()
+    filters = EarningFilter(request.GET, queryset=earnings)
+    paginator = Paginator(filters.qs, 25)
+    page_number = request.GET.get('paginator')
+    earnings = paginator.get_page(page_number)
+    context = {
+      'earnings':earnings, 'filters':filters
+    }
+    return render(request, 'dashboard/earnings/earnings.html', context)
+
+# earning create view 
+class EarnCreateView(SuccessMessageMixin,CreateView):
+  form_class = EarningForm
+  template_name = 'dashboard/earnings/earning_form.html'
+  success_message = 'Earning Details Created'
+  error_message = 'Earning Details Not Created'
+  success_url = '/dashboard/earns'
+
+# earn update view 
+class EarnUpdateView(SuccessMessageMixin,UpdateView):
+  model = Earning
+  form_class = EarningForm
+  template_name = 'dashboard/earnings/earning_form.html'
+  success_message = 'Earning Details updated'
+  error_message = 'Earning Details Not updated'
+  success_url = '/dashboard/earns'
+
+# earn delete view
+class EarnDelete(SuccessMessageMixin,DeleteView):
+  model = Earning
+  template_name = 'dashboard/earnings/earn_delete_confirm.html'
+  success_url = '/dashboard/earns'
+  success_message = 'Earning Details Deleted'
+  error_message = 'Earning Details Not Deleted'

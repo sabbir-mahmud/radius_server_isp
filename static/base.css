@@ -1,0 +1,19 @@
+/* message modal design */
+
+.toast:not(.show) {
+ display: block;
+ position: absolute;
+ top: 10%;
+ right: 1%;
+}
+
+/* delete confim form design */
+form.delete-form {
+ width: 50%;
+ height: 50%;
+ box-shadow: 0px 1px 2px 1px;
+ padding: 39px 21px;
+ border-radius: 7px;
+ margin-left: 25%;
+ margin-top: 5%;
+}

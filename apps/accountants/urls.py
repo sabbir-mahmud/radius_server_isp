@@ -23,5 +23,17 @@ urlpatterns = [
  path('employ/category/create', employ_views.EmployCategoryCreate.as_view(), name='employ_category-create'),
  path('employ/category/update/<str:pk>', employ_views.UpdateCategoryEmploy.as_view(), name='employ_category-update'),
  path('employ/category/delete/<str:pk>', employ_views.EmployCategoryDelete.as_view(), name='employ_category-delete'),
+
+ # ? invests urls
+ path('invest/', views.InvestView.as_view(), name='invests'),
+ path('invest/create', views.InvestCreateView.as_view(), name='invests-create'),
+ path('invest/update/<str:pk>/', views.InvestUpdateView.as_view(), name='invests-update'),
+ path('invest/delete/<str:pk>/', views.InvestDelete.as_view(), name='invests-delete'),
+
+ # ? invests urls
+ path('earns/', views.EarnView.as_view(), name='earns'),
+ path('earns/create', views.EarnCreateView.as_view(), name='earns-create'),
+ path('earns/update/<str:pk>/', views.EarnUpdateView.as_view(), name='earns-update'),
+ path('earns/delete/<str:pk>/', views.EarnDelete.as_view(), name='earns-delete'),
  
 ]

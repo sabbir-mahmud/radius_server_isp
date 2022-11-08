@@ -1,7 +1,6 @@
 /isp-env
 /db.sqlite3
 /.env
-/static
 *.log
 *.pot
 *.pyc
