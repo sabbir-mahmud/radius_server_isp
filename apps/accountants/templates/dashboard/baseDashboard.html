@@ -8,15 +8,19 @@
  <div class="row">
   <div class="col-lg-2 mx-1 bg-dark text-white">
    <ul>
+    <li>{{profile.name}}</li>
     <li><a href="{% url 'dashboard:invests' %}">invests</a></li>
     <li><a href="{% url 'dashboard:earns' %}">earns</a></li>
     <li><a href="{% url 'dashboard:owners' %}">owner</a></li>
     <li><a href="{% url 'dashboard:employ' %}">employ</a></li>
+    <li><a href={% url 'dashboard:employ_category' %}>employ categories</a></li>
+    <li><a href="{% url 'dashboard:profile-update' 1 %}">profile</a></li>
+    <li><a href="{% url 'dashboard:commission-update' 1 %}">commission</a></li>
    </ul>
 
   </div>
   <div class="col-lg-9 dashboard-wrapper">
-   {% block dashboard %}bcd{% endblock dashboard %}
+   {% block dashboard %}{% endblock dashboard %}
   </div>
  </div>
 </section>

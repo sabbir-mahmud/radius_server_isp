@@ -35,5 +35,11 @@ urlpatterns = [
  path('earns/create', views.EarnCreateView.as_view(), name='earns-create'),
  path('earns/update/<str:pk>/', views.EarnUpdateView.as_view(), name='earns-update'),
  path('earns/delete/<str:pk>/', views.EarnDelete.as_view(), name='earns-delete'),
+
+ # ? commissions update urls
+ path('settings/commission/update/<str:pk>',views.CommissionUpdateView.as_view(), name='commission-update'),
+
+ # ? profile update urls
+ path('settings/profile/update/<str:pk>',views.CompanyProfileView.as_view(), name='profile-update')
  
 ]

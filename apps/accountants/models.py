@@ -5,6 +5,16 @@ from django.db import models
 # user
 User = get_user_model()
 
+# Company Profile
+class CompanyProfile(models.Model):
+  name = models.CharField(max_length=245)
+  city = models.CharField(max_length=245)
+  state = models.CharField(max_length=245)
+  country = models.CharField(max_length=245)
+
+  def __str__(self):
+    return self.name
+
 # owner model
 class Owner(models.Model):
  user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Owner')

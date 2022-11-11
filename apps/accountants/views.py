@@ -1,19 +1,32 @@
 # imports
+from datetime import datetime
+
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
+from django.db.models import Sum
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
 from .filters import EarningFilter, InvestFilter, OwnerFilter
-from .forms import EarningForm, InvestForm, OwnerForm
-from .models import Earning, Invest, Owner
+from .forms import (CommissionForm, CompanyProfileForm, EarningForm,
+                    InvestForm, OwnerForm)
+from .models import Commission, CompanyProfile, Earning, Invest, Owner
 
 
 # Owner Dashboard
 class OwnerDashboard(View):
  def get(self, request):
-  return render(request, 'dashboard/baseDashboard.html')
+  earn = Earning.objects.aggregate(Sum('earning_amount'))['earning_amount__sum'] if Earning.objects.all().exists() else 0
+  invest = Invest.objects.aggregate(Sum('invest_amount'))['invest_amount__sum'] if Invest.objects.all().exists() else 0
+
+
+
+  context = {
+    'earn':earn,
+    'invest':invest
+  }
+  return render(request, 'dashboard/dashboard.html',context)
 
 
 # owners view
@@ -129,3 +142,22 @@ class EarnDelete(SuccessMessageMixin,DeleteView):
   success_url = '/dashboard/earns'
   success_message = 'Earning Details Deleted'
   error_message = 'Earning Details Not Deleted'
+
+# Commission Update View
+class CommissionUpdateView(SuccessMessageMixin,UpdateView):
+  model = Commission
+  form_class = CommissionForm
+  template_name = 'dashboard/commission/commission_form.html'
+  success_url = '/dashboard'
+  success_message = 'Commission Details Updated'
+  error_message = 'Commission Details Not Updated'
+
+
+# Company Profile View
+class CompanyProfileView(SuccessMessageMixin,UpdateView):
+  model = CompanyProfile
+  form_class = CompanyProfileForm
+  template_name = 'dashboard/profile/profile_form.html'
+  success_url = '/dashboard'
+  success_message = 'Commission Details Updated'
+  error_message = 'Commission Details Not Updated'

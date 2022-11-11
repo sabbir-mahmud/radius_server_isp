@@ -1,8 +1,14 @@
 # imports
 from django.forms import ModelForm
 
-from .models import Earning, Invest, Owner
+from .models import Commission, CompanyProfile, Earning, Invest, Owner
 
+
+# Company Profile Form
+class CompanyProfileForm(ModelForm):
+  class Meta:
+    model = CompanyProfile
+    fields = '__all__'
 
 # Owner Form
 class OwnerForm(ModelForm):
@@ -21,3 +27,9 @@ class EarningForm(ModelForm):
  class Meta:
   model = Earning
   fields = '__all__'
+
+# Commission form
+class CommissionForm(ModelForm):
+  class Meta:
+    model = Commission
+    fields = '__all__'
