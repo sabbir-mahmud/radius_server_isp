@@ -49,7 +49,7 @@ class Earning(Wrapper):
 
 # Commission model
 class Commission(models.Model):
- profit = models.IntegerField()
+ profit = models.FloatField()
 
  def __str__(self):
   return str(self.profit)

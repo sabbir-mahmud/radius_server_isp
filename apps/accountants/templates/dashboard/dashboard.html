@@ -2,7 +2,17 @@
 {% load crispy_forms_tags %}
 {% block title %}Dashboard{% endblock title %}
 {% block dashboard %}
-earn:  {{earn}}
-invest: {{invest}}
+earn:  {{earn}}/= tk
+invest: {{invest}}/= tk
+profit: {{profit}}/= tk
+loss: {{loss}}/= tk
+total_bill: {{total_bill}}
+earn_via_bill: {{earn_via_bill}}
+up_steam_bill: {{up_steam_bill}}
+
+<h1>Clients</h1>
+total clients: {{clients}}
+active clients: {{active_clients}}
+inactive clients: {{inactive_clients}}
 
 {% endblock %}
