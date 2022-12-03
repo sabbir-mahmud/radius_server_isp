@@ -9,6 +9,10 @@ from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
 from apps.clients.models import Clients
+from apps.employ.models import Employ
+from apps.onu.models import Onu
+from apps.tasks.models import Tasks
+from apps.warehouse.models import Warehouse
 
 from .filters import EarningFilter, InvestFilter, OwnerFilter
 from .forms import (CommissionForm, CompanyProfileForm, EarningForm,
@@ -41,10 +45,7 @@ class OwnerDashboard(View):
 
   # * billing details
   total_bill = Clients.objects.filter(status='active').aggregate(Sum('pack__price'))['pack__price__sum'] if Clients.objects.filter(status='active').exists() else 0
-
   commission = Commission.objects.get(id=1)
-
-
   earn_via_bill = (total_bill * commission.profit) / 100
   up_steam_bill = total_bill - earn_via_bill
 
@@ -53,10 +54,25 @@ class OwnerDashboard(View):
   active_clients = Clients.objects.filter(status='active').count() if Clients.objects.filter(status='active').exists() else 0
   inactive_clients = Clients.objects.filter(status='inactive').count() if Clients.objects.filter(status='inactive').exists() else 0
 
+  # * Onu details
+  total_onu = Onu.objects.all().count() if Onu.objects.all().exists() else 0
+  active_onu = Onu.objects.filter(status='Active').count() if Onu.objects.filter(status='Active').exists() else 0
+  stored_onu = Onu.objects.filter(status='Stored').count() if Onu.objects.filter(status='Stored').exists() else 0
+  damaged_onu = Onu.objects.filter(status='Damaged').count() if Onu.objects.filter(status='Damaged').exists() else 0
 
+  # * employ details
+  total_employ = Employ.objects.all().count() if Employ.objects.all().exists() else 0
+  active_employ = Employ.objects.filter(status='active').count() if Employ.objects.filter(status='active').exists() else 0
+  inactive_employ = Employ.objects.filter(status='inactive').count() if Employ.objects.filter(status='inactive').exists() else 0
+
+  # * task details
+  total_basket = Tasks.objects.all().count() if Tasks.objects.all().exists() else 0
+  pending_basket = Tasks.objects.filter(status='pending').count() if Tasks.objects.filter(status='pending').exists() else 0
+  in_progress_basket = Tasks.objects.filter(status='in progress').count() if Tasks.objects.filter(status='in progress').exists() else 0
+  completed_basket = Tasks.objects.filter(status='complete').count() if Tasks.objects.filter(status='complete').exists() else 0
 
   context = {
-    # * profit details
+    # profit details
     'earn':earn,
     'invest':invest,
     'profit':profit,
@@ -65,12 +81,27 @@ class OwnerDashboard(View):
     'up_steam_bill':up_steam_bill,
     'earn_via_bill':earn_via_bill,
 
-    # * clients details
+    # clients details
     'clients':clients,
     'active_clients':active_clients,
     'inactive_clients':inactive_clients,
 
+    # onu details
+    'total_onu':total_onu,
+    'active_onu':active_onu,
+    'stored_onu':stored_onu,
+    'damaged_onu':damaged_onu,
 
+    # employ details
+    'total_employ':total_employ,
+    'active_employ':active_employ,
+    'inactive_employ':inactive_employ,
+
+    # task basket
+    'total_basket':total_basket,
+    'pending_basket':pending_basket,
+    'in_progress_basket':in_progress_basket,
+    'completed_basket':completed_basket,
   }
   return render(request, 'dashboard/dashboard.html',context)
 
