@@ -1,8 +1,10 @@
 # imports
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import redirect, render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
@@ -12,6 +14,7 @@ from .models import Onu
 
 
 #* onu lists
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OnuList(View):
  def get(self, request):
   onus = Onu.objects.all()
@@ -26,6 +29,7 @@ class OnuList(View):
   return render(request,'onu/onus.html', context)
 
 #* Onu create
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OnuCreate(SuccessMessageMixin, CreateView):
  form_class = OnuForm
  template_name = 'onu/onu_form.html'
@@ -35,6 +39,7 @@ class OnuCreate(SuccessMessageMixin, CreateView):
 
 
 #* Onu Update
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OnuUpdate(SuccessMessageMixin, UpdateView):
  model = Onu
  form_class = OnuForm
@@ -45,6 +50,7 @@ class OnuUpdate(SuccessMessageMixin, UpdateView):
 
 
 #* Onu Delete
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OnuDelete(SuccessMessageMixin,DeleteView):
  model = Onu
  template_name = 'onu/onu_delete_form.html'

@@ -1,8 +1,10 @@
 # Create your views here.
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import redirect, render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
@@ -13,6 +15,7 @@ from .models import TaskCategory, Tasks
 # Create your views here.
 
 # Task lists
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class TasksView(View):
  def get(self,request):
   tasks = Tasks.objects.all()
@@ -28,6 +31,7 @@ class TasksView(View):
 
 
 # tasks Create view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 def createTasks(request):  
   form = TasksForm()
   if request.method == 'POST':
@@ -45,6 +49,7 @@ def createTasks(request):
   return render(request,'tasks/task_form.html',context)
 
 # tasks Update View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class UpdateTasks(SuccessMessageMixin,UpdateView):
  model = Tasks
  form_class = TasksForm
@@ -55,6 +60,7 @@ class UpdateTasks(SuccessMessageMixin,UpdateView):
 
 
 # tasks Delete View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class DeleteTasks(SuccessMessageMixin,DeleteView):
   model = Tasks
   template_name = 'tasks/tasks_delete.html'
@@ -64,6 +70,7 @@ class DeleteTasks(SuccessMessageMixin,DeleteView):
 
 
 # Task category lists
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class TasksCategoryView(View):
  def get(self,request):
   taskCategory = TaskCategory.objects.all()
@@ -79,6 +86,7 @@ class TasksCategoryView(View):
 
 
 # tasks Create view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class CreateTasksCategory(SuccessMessageMixin,CreateView):  
   form_class = TaskCategoryForm
   template_name = 'taskCategory/tasksCategory_form.html'
@@ -87,6 +95,7 @@ class CreateTasksCategory(SuccessMessageMixin,CreateView):
   error_message ='task category not created'
 
 # tasks Update View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class UpdateTasksCategory(SuccessMessageMixin,UpdateView):
   model= TaskCategory
   form_class = TaskCategoryForm
@@ -97,6 +106,7 @@ class UpdateTasksCategory(SuccessMessageMixin,UpdateView):
 
 
 # tasks Delete View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class DeleteTasksCategory(SuccessMessageMixin,DeleteView):
   model = TaskCategory
   template_name = 'taskCategory/tasksCategory_delete.html'

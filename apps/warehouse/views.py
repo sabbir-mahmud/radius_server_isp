@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
@@ -8,9 +10,10 @@ from .filters import CategoryFilter, WarehouseFilter
 from .forms import WarehouseCategoryForm, WarehouseProductForm
 from .models import Warehouse, WarehouseCategory
 
+
 # warehouse category 
 # warehouse category list
-
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseCategoryList(View):
  def get(self,request):
   categories = WarehouseCategory.objects.all()
@@ -25,6 +28,7 @@ class WarehouseCategoryList(View):
   return render(request, 'warehouse/category.html', context)
 
 # create warehouse category
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseCreateCategory(SuccessMessageMixin, CreateView):
  form_class = WarehouseCategoryForm
  template_name = 'warehouse/create_category.html'
@@ -33,6 +37,7 @@ class WarehouseCreateCategory(SuccessMessageMixin, CreateView):
  error_message = 'failed category creating'
 
 # update warehouse category
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseUpdateCategory(SuccessMessageMixin, UpdateView):
  model = WarehouseCategory
  form_class = WarehouseCategoryForm
@@ -42,6 +47,7 @@ class WarehouseUpdateCategory(SuccessMessageMixin, UpdateView):
  error_message = 'failed category updating'
 
 # delete warehouse category
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseDeleteCategory(SuccessMessageMixin,DeleteView):
  model = WarehouseCategory
  template_name = 'warehouse/category_delete_confirm.html'
@@ -53,6 +59,7 @@ class WarehouseDeleteCategory(SuccessMessageMixin,DeleteView):
 
 # warehouse product
 # warehouse product list
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseProductList(View):
  def get(self,request):
   products = Warehouse.objects.all()
@@ -68,6 +75,7 @@ class WarehouseProductList(View):
 
 
 # warehouse product create
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseProductCreate(SuccessMessageMixin,CreateView):
  form_class = WarehouseProductForm
  template_name = 'warehouse/warehouse_create.html'
@@ -76,6 +84,7 @@ class WarehouseProductCreate(SuccessMessageMixin,CreateView):
  error_message = 'product creating failed'
  
 # warehouse product update
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseProductUpdate(SuccessMessageMixin,UpdateView):
  model = Warehouse
  form_class = WarehouseProductForm
@@ -86,6 +95,7 @@ class WarehouseProductUpdate(SuccessMessageMixin,UpdateView):
 
 
 # warehouse delete product
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class WarehouseProductDelete(SuccessMessageMixin,DeleteView):
  model = Warehouse
  template_name = 'warehouse/warehouse_delete_confirm.html'

@@ -1,7 +1,9 @@
 # imports
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
@@ -11,6 +13,7 @@ from .models import Employ, EmployCategory
 
 
 # Employ Management panel
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EmployView(View):
  def get(self, request):
   employs = Employ.objects.all()
@@ -25,6 +28,7 @@ class EmployView(View):
   return render(request, 'dashboard/employ/employ.html', context)
 
 # Employ Create View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EmployCreate(SuccessMessageMixin,CreateView):
  form_class = EmployForm
  template_name = 'dashboard/employ/employ_form.html'
@@ -34,6 +38,7 @@ class EmployCreate(SuccessMessageMixin,CreateView):
 
 
 # Employ Update View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class UpdateEmploy(SuccessMessageMixin,UpdateView):
  model = Employ
  form_class = EmployForm
@@ -43,6 +48,7 @@ class UpdateEmploy(SuccessMessageMixin,UpdateView):
  error_message = 'Employ not updated'
 
 # Employ Delete View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EmployDelete(SuccessMessageMixin,DeleteView):
  model = Employ
  template_name = 'dashboard/employ/employ_delete_confirm.html'
@@ -52,6 +58,7 @@ class EmployDelete(SuccessMessageMixin,DeleteView):
 
 
 # Employ Category Management panel
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EmployCategoryView(View):
  def get(self, request):
   categories = EmployCategory.objects.all()
@@ -64,6 +71,7 @@ class EmployCategoryView(View):
   return render(request, 'dashboard/employ/employ_category.html', context)
 
 # Employ Category Create View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EmployCategoryCreate(SuccessMessageMixin,CreateView):
  form_class = EmployCategoryForm
  template_name = 'dashboard/employ/employ_category_form.html'
@@ -73,6 +81,7 @@ class EmployCategoryCreate(SuccessMessageMixin,CreateView):
 
 
 # Employ Category Update View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class UpdateCategoryEmploy(SuccessMessageMixin,UpdateView):
  model = EmployCategory
  form_class = EmployCategoryForm
@@ -82,6 +91,7 @@ class UpdateCategoryEmploy(SuccessMessageMixin,UpdateView):
  error_message = 'Employ not updated'
 
 # Employ Category Delete View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EmployCategoryDelete(SuccessMessageMixin,DeleteView):
  model = EmployCategory
  template_name = 'dashboard/employ/employ_category_delete_form.html'

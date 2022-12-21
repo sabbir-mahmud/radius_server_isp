@@ -1,7 +1,9 @@
 # imports
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
@@ -13,6 +15,7 @@ from .models import Pop
 Pop list view
 
 '''
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class PopList(View):
  def get(self, request):
   pops = Pop.objects.all()
@@ -32,6 +35,7 @@ class PopList(View):
 Pop Create View
 
 '''
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class CreatePop(SuccessMessageMixin,CreateView):
  form_class = PopForm
  template_name = 'pop/pop_form.html'
@@ -44,6 +48,7 @@ class CreatePop(SuccessMessageMixin,CreateView):
 Pop Update View
 
 '''
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class UpdatePop(SuccessMessageMixin,UpdateView):
  model = Pop
  form_class = PopForm
@@ -57,6 +62,7 @@ class UpdatePop(SuccessMessageMixin,UpdateView):
 Pop Delete View
 
 '''
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class DeletePop(SuccessMessageMixin,DeleteView):
  model = Pop
  template_name = 'pop/pop_delete_form.html'

@@ -111,6 +111,7 @@ class OwnerDashboard(View):
     
 
 # owners view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OwnerView(View):
  def get(self, request):
   owners = Owner.objects.all()
@@ -124,6 +125,7 @@ class OwnerView(View):
   return render(request, 'dashboard/owner/owner.html', context)
 
 # owner create view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OwnerCreate(SuccessMessageMixin,CreateView):
  form_class = OwnerForm
  template_name = 'dashboard/owner/owner_form.html'
@@ -132,6 +134,7 @@ class OwnerCreate(SuccessMessageMixin,CreateView):
  error_message = 'owner not created'
 
 # owner update view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OwnerUpdate(SuccessMessageMixin,UpdateView):
  model = Owner
  form_class = OwnerForm
@@ -141,6 +144,7 @@ class OwnerUpdate(SuccessMessageMixin,UpdateView):
  error_message = 'owner not updated'
 
 # owner delete view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OwnerDelete(SuccessMessageMixin,DeleteView):
  model = Owner
  template_name = 'dashboard/owner/owner_delete_confirm.html'
@@ -149,6 +153,7 @@ class OwnerDelete(SuccessMessageMixin,DeleteView):
  error_message = 'owner not deleted'
 
 # invest view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class InvestView(View):
   def get(self, request,):
     invests = Invest.objects.all()
@@ -162,6 +167,7 @@ class InvestView(View):
     return render(request, 'dashboard/invest/invest.html', context)
 
 # invest create view 
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class InvestCreateView(SuccessMessageMixin,CreateView):
   form_class = InvestForm
   template_name = 'dashboard/invest/invest_form.html'
@@ -170,6 +176,7 @@ class InvestCreateView(SuccessMessageMixin,CreateView):
   success_url = '/dashboard/invest'
 
 # invest update view 
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class InvestUpdateView(SuccessMessageMixin,UpdateView):
   model = Invest
   form_class = InvestForm
@@ -179,6 +186,7 @@ class InvestUpdateView(SuccessMessageMixin,UpdateView):
   success_url = '/dashboard/invest'
 
 # invest delete view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class InvestDelete(SuccessMessageMixin,DeleteView):
   model = Invest
   template_name = 'dashboard/invest/invest_delete_confirm.html'
@@ -187,6 +195,7 @@ class InvestDelete(SuccessMessageMixin,DeleteView):
   error_message = 'Invests Details Not Deleted'
 
 # * earn view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EarnView(View):
   def get(self, request,):
     earnings = Earning.objects.all()
@@ -200,6 +209,7 @@ class EarnView(View):
     return render(request, 'dashboard/earnings/earnings.html', context)
 
 # earning create view 
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EarnCreateView(SuccessMessageMixin,CreateView):
   form_class = EarningForm
   template_name = 'dashboard/earnings/earning_form.html'
@@ -208,6 +218,7 @@ class EarnCreateView(SuccessMessageMixin,CreateView):
   success_url = '/dashboard/earns'
 
 # earn update view 
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EarnUpdateView(SuccessMessageMixin,UpdateView):
   model = Earning
   form_class = EarningForm
@@ -217,6 +228,7 @@ class EarnUpdateView(SuccessMessageMixin,UpdateView):
   success_url = '/dashboard/earns'
 
 # earn delete view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class EarnDelete(SuccessMessageMixin,DeleteView):
   model = Earning
   template_name = 'dashboard/earnings/earn_delete_confirm.html'
@@ -225,6 +237,7 @@ class EarnDelete(SuccessMessageMixin,DeleteView):
   error_message = 'Earning Details Not Deleted'
 
 # Commission Update View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class CommissionUpdateView(SuccessMessageMixin,UpdateView):
   model = Commission
   form_class = CommissionForm
@@ -235,6 +248,7 @@ class CommissionUpdateView(SuccessMessageMixin,UpdateView):
 
 
 # Company Profile View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class CompanyProfileView(SuccessMessageMixin,UpdateView):
   model = CompanyProfile
   form_class = CompanyProfileForm

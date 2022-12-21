@@ -1,7 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import redirect, render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
@@ -12,6 +14,7 @@ from .models import Clients
 # Create your views here.
 
 # Clients Models
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class ClientsView(View):
  def get(self,request):
   clients = Clients.objects.all()
@@ -27,6 +30,7 @@ class ClientsView(View):
 
 
 # Clients Create view
+@method_decorator(login_required(login_url='login'), name='dispatch')
 def createClients(request):  
   form = ClientsForm()
   if request.method == 'POST':
@@ -44,6 +48,7 @@ def createClients(request):
   return render(request,'clients/create_client.html',context)
 
 # clients Update View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class UpdateClients(SuccessMessageMixin,UpdateView):
  model = Clients
  form_class = ClientsForm
@@ -54,6 +59,7 @@ class UpdateClients(SuccessMessageMixin,UpdateView):
 
 
 # clients Delete View
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class DeleteClients(SuccessMessageMixin,DeleteView):
   model = Clients
   template_name = 'clients/clients_delete.html'
