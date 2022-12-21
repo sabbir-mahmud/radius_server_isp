@@ -1,9 +1,7 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'dashboard/baseDashboard.html' %}
+{% load crispy_forms_tags %}
 {% block title %}warehouse category{% endblock title %}
-{% block extraHead %}
-<link rel="stylesheet" href="{% static 'warehouse/category.css' %}">
-{% endblock extraHead %}
-{% block content %}
+{% block dashboard %}
 <table class="table table-striped table-hover rounded">
 
  <thead class="table-dark">
@@ -45,4 +43,4 @@
 {% if categories.has_next %}
 <a class="btn next-btn btn-success mb-3" href="?p={{categories.next_page_number}}">next</a>
 {% endif %}
-{% endblock content %}
+{% endblock dashboard %}

@@ -1,10 +1,12 @@
 # imports
 from datetime import datetime
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 
@@ -21,6 +23,7 @@ from .models import Commission, CompanyProfile, Earning, Invest, Owner
 
 
 # Owner Dashboard
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class OwnerDashboard(View):
  def get(self, request):
   # * profit details
@@ -105,6 +108,7 @@ class OwnerDashboard(View):
   }
   return render(request, 'dashboard/dashboard.html',context)
 
+    
 
 # owners view
 class OwnerView(View):

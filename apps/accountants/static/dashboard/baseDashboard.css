@@ -1,3 +1,24 @@
 .dashboard-wrapper {
  width: 1550px;
 }
+
+.dashboard-navbar-wrapper {
+ max-height: 89vh;
+ min-height: 89vh;
+}
+
+.dashboard-navbar {
+ padding-top: 10px;
+ border-radius: 5px;
+
+}
+
+.dashboard-navbar ul li {
+ list-style: none;
+ margin-left: -25px;
+}
+
+.dashboard-navbar ul li a {
+ text-decoration: none;
+ color: white;
+}
