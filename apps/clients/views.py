@@ -30,7 +30,7 @@ class ClientsView(View):
 
 
 # Clients Create view
-@method_decorator(login_required(login_url='login'), name='dispatch')
+@login_required(login_url='login')
 def createClients(request):  
   form = ClientsForm()
   if request.method == 'POST':
