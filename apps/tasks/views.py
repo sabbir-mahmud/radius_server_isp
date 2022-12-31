@@ -31,7 +31,7 @@ class TasksView(View):
 
 
 # tasks Create view
-@method_decorator(login_required(login_url='login'), name='dispatch')
+@login_required(login_url='login')
 def createTasks(request):  
   form = TasksForm()
   if request.method == 'POST':

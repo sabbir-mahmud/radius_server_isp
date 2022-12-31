@@ -2,36 +2,48 @@
 {% load crispy_forms_tags %}
 {% block title %}Dashboard{% endblock title %}
 {% block dashboard %}
-<h1>profit details</h1>
-earn:  {{earn}}/= tk
-invest: {{invest}}/= tk
-profit: {{profit}}/= tk
-loss: {{loss}}/= tk
-total_bill: {{total_bill}}
-earn_via_bill: {{earn_via_bill}}
-up_steam_bill: {{up_steam_bill}}
 
-<h1>Clients</h1>
-total clients: {{clients}}
-active clients: {{active_clients}}
-inactive clients: {{inactive_clients}}
+<section class="profit-area ms-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <h1>profit details</h1>
+            <li>earn: {{earn}}/= tk</li>
+            <li>invest: {{invest}}/= tk</li>
+            <li>profit: {{profit}}/= tk</li>
+            <li>loss: {{loss}}/= tk</li>
+            <li>total_bill: {{total_bill}}</li>
+            <li>earn_via_bill: {{earn_via_bill}}</li>
+            <li>up_steam_bill: {{up_steam_bill}}</li>
+        </div>
 
-<h1>Onu Details</h1>
-total onu: {{total_onu}}
-active onu: {{active_onu}}
-stored onu: {{stored_onu}}
-damaged onu: {{damaged_onu}}
+        <div class="col-lg-4">
+            <h1>Clients</h1>
+            <li>total clients: {{clients}}</li>
+            <li>active clients: {{active_clients}}</li>
+            <li>inactive clients: {{inactive_clients}}</li>
+        </div>
 
-<H1>Employ details</H1>
-total Employ: {{total_employ}}
-active Employ: {{active_employ}}
-stored Employ: {{inactive_employ}}
+        <div class="col-lg-4">
+            <h1>Onu Details</h1>
+            <li>total onu: {{total_onu}}</li>
+            <li>active onu: {{active_onu}}</li>
+            <li>stored onu: {{stored_onu}}</li>
+            <li>damaged onu: {{damaged_onu}}</li>
+        </div>
 
-<h1>Task Basket</h1>
-total basket: {{total_basket}}
-pending basket: {{pending_basket}}
-in progress basket: {{in_progress_basket}}
-completed basket: {{completed_basket}}
-
-
+        <div class="col-lg-4">
+            <H1>Employ details</H1>
+            <li>total Employ: {{total_employ}}</li>
+            <li>active Employ: {{active_employ}}</li>
+            <li>stored Employ: {{inactive_employ}}</li>
+        </div>
+        <div class="col-lg-4">
+            <h1>Task Basket</h1>
+            <li>total basket: {{total_basket}}</li>
+            <li>pending basket: {{pending_basket}}</li>
+            <li>in progress basket: {{in_progress_basket}}</li>
+            <li>completed basket: {{completed_basket}}</li>
+        </div>
+    </div>
+</section>
 {% endblock %}

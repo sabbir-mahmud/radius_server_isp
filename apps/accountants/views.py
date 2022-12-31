@@ -46,9 +46,13 @@ class OwnerDashboard(View):
   profit = profit_calculator(invest,earn)
   loss = loss_calculator(invest,earn)
 
+  def create_commission():
+    Commission.objects.create(profit=20)
+    return Commission.objects.get(id=1)
+
   # * billing details
   total_bill = Clients.objects.filter(status='active').aggregate(Sum('pack__price'))['pack__price__sum'] if Clients.objects.filter(status='active').exists() else 0
-  commission = Commission.objects.get(id=1)
+  commission = Commission.objects.get(id=1) if Commission.objects.all().exists() else create_commission()
   earn_via_bill = (total_bill * commission.profit) / 100
   up_steam_bill = total_bill - earn_via_bill
 
