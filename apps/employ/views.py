@@ -75,7 +75,7 @@ class EmployCategoryView(View):
 class EmployCategoryCreate(SuccessMessageMixin,CreateView):
  form_class = EmployCategoryForm
  template_name = 'dashboard/employ/employ_category_form.html'
- success_url = '/dashboard/employ'
+ success_url = '/dashboard/employ/category'
  success_message = 'Employ created'
  error_message = 'Employ not created'
 
@@ -86,7 +86,7 @@ class UpdateCategoryEmploy(SuccessMessageMixin,UpdateView):
  model = EmployCategory
  form_class = EmployCategoryForm
  template_name = 'dashboard/employ/employ_category_form.html'
- success_url = '/dashboard/employ'
+ success_url = '/dashboard/employ/category'
  success_message = 'Employ updated'
  error_message = 'Employ not updated'
 
@@ -95,6 +95,6 @@ class UpdateCategoryEmploy(SuccessMessageMixin,UpdateView):
 class EmployCategoryDelete(SuccessMessageMixin,DeleteView):
  model = EmployCategory
  template_name = 'dashboard/employ/employ_category_delete_form.html'
- success_url = '/dashboard/employ'
+ success_url = '/dashboard/employ/category'
  success_message = 'Employ deleted'
  error_message = 'Employ not deleted'

@@ -16,6 +16,7 @@ from apps.onu.models import Onu
 from apps.tasks.models import Tasks
 from apps.warehouse.models import Warehouse
 
+from .decorator import owner_roles
 from .filters import EarningFilter, InvestFilter, OwnerFilter
 from .forms import (CommissionForm, CompanyProfileForm, EarningForm,
                     InvestForm, OwnerForm)
@@ -24,6 +25,7 @@ from .models import Commission, CompanyProfile, Earning, Invest, Owner
 
 # Owner Dashboard
 @method_decorator(login_required(login_url='login'), name='dispatch')
+@method_decorator(owner_roles, name='dispatch')
 class OwnerDashboard(View):
  def get(self, request):
   # * profit details

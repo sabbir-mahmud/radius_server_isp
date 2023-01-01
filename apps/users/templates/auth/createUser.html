@@ -1,0 +1,9 @@
+{% extends 'dashboard/baseDashboard.html' %}
+{% load static %}{% load crispy_forms_tags %}
+{% block title %}owner dashboard{% endblock title %}
+{% block dashboard %}
+<form method="post">
+    {{ form|crispy }}
+    <input class="btn btn-primary mt-2" type="submit" value="Create User">
+</form>
+{% endblock dashboard %}

@@ -3,6 +3,18 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 
 from .decorator import auth_user
+from .forms import RegisterForm
+
+'''
+Create User
+
+'''
+def register(request):
+  form = RegisterForm()
+
+  context = {'form':form}
+  return render(request,'auth/createUser.html',context)
+
 
 '''
 login user

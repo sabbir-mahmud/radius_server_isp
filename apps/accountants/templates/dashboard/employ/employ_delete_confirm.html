@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
-{% block title %}delete {{ object }}{% endblock title %}
-{% block content %}
+{% extends 'dashboard/baseDashboard.html' %}
+{% block title %}{{ object }} category delete{% endblock title %}
+{% block dashboard %}
 
 <form class="delete-form" method="post">
  {% csrf_token %}
@@ -10,4 +10,4 @@
  <a class="btn btn-primary" href="{% url 'dashboard:employ' %}">Cancel</a>
 </form>
 
-{% endblock content %}
+{% endblock dashboard %}
