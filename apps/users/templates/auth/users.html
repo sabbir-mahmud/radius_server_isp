@@ -6,9 +6,10 @@
 
  <thead class="table-dark">
   <tr>
-   <th colspan='6'>
+   <th>
     <a class='text-white' href={% url 'create-user' %}>Create</a>
    </th>
+   <th class="text-center" colspan='5'>User's Details</th>
   </tr>
   <tr>
    <th scope="col">#</th>
@@ -27,7 +28,7 @@
    <td>{{user.last_name}}</td>
    <td>{{user.email}}</td>
    <td><a href={% url 'user-update' user.id %}>update</a></td>
-   {% comment %} <td><a href={% url 'dashboard:user-delete' user.id %}>delete</a></td> {% endcomment %}
+   <td><a href={% url 'user-delete' user.id %}>delete</a></td>
   </tr>
   {% endfor %}
 

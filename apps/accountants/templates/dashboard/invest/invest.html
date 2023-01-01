@@ -10,11 +10,9 @@
     <a class='text-white' href={% url 'dashboard:invests-create' %}>Create</a>
    </th>
    <form class="mb-2 mt-3 mx-2" method="get">
-    <th>
+    <th colspan='6'>
      {{ filters.form.created_at.label_tag }}
      {{ filters.form.created_at }}
-    </th>
-    <th colspan="5">
      <input class="btn btn-primary px-4 ms-3" type="submit" value="search">
     </th>
    </form>

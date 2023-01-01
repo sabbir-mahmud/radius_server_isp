@@ -28,7 +28,11 @@ Create User
 '''
 def register(request):
   form = RegisterForm()
-
+  if request.method == 'POST':
+    form = RegisterForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('user')
   context = {'form':form}
   return render(request,'auth/createUser.html',context)
 
@@ -43,6 +47,15 @@ class UpdateUser(SuccessMessageMixin, UpdateView):
   success_url = '/users'
   success_message = 'User updated successfully'
   error_message = 'User not updated'
+
+'''
+Delete User
+
+'''
+def delete_user(request,pk):
+  User.objects.get(id=pk).delete()
+  return redirect('user')
+
 
 '''
 login user

@@ -1,5 +1,8 @@
 .dashboard-wrapper {
     width: 1550px;
+    height: 90vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .dashboard-navbar-wrapper {
@@ -22,4 +25,24 @@
 .dashboard-navbar ul li a {
     text-decoration: none;
     color: white;
+}
+
+/* Extra large devices (large laptops and desktops, 1400px and up) */
+@media only screen and (max-width: 1400px) {
+    .dashboard-wrapper {
+        width: 1100px;
+        height: 90vh;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+    .dashboard-wrapper {
+        width: 900px;
+        height: 90vh;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
 }
