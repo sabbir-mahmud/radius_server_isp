@@ -2,53 +2,50 @@
 {% load crispy_forms_tags %}
 {% block title %}Dashboard{% endblock title %}
 {% block dashboard %}
+<div class="row p-5 mt-1">
+    <div class="col-lg-3 mx-3 my-3 shadow bg-primary p-3 rounded-2 text-white">
+        <h1>Business details</h1>
+        <li class="list-unstyled ms-1">earn: {{earn}}/= tk</li>
+        <li class="list-unstyled ms-1">invest: {{invest}}/= tk</li>
+        <li class="list-unstyled ms-1">profit: {{profit}}/= tk</li>
+        <li class="list-unstyled ms-1">loss: {{loss}}/= tk</li>
 
-<section class="profit-area p-5 mt-1 ms-5">
-    <div class="row">
-        <div class="col-lg-3 mx-3 my-3 shadow bg-primary p-3 rounded-2 text-white">
-            <h1>Business details</h1>
-            <li class="list-unstyled ms-1">earn: {{earn}}/= tk</li>
-            <li class="list-unstyled ms-1">invest: {{invest}}/= tk</li>
-            <li class="list-unstyled ms-1">profit: {{profit}}/= tk</li>
-            <li class="list-unstyled ms-1">loss: {{loss}}/= tk</li>
-            
-        </div>
-
-        <div class="col-lg-3 mx-3 my-3 shadow bg-secondary p-3 rounded-2 text-white">
-            <h1>Billing Details</h1>
-            <li class="list-unstyled ms-1">total_bill: {{total_bill}}</li>
-            <li class="list-unstyled ms-1">earn_via_bill: {{earn_via_bill}}</li>
-            <li class="list-unstyled ms-1">up_steam_bill: {{up_steam_bill}}</li>
-        </div>
-
-        <div class="col-lg-3 mx-3 my-3 shadow bg-primary p-3 rounded-2 text-white">
-            <h1>Clients</h1>
-            <li class="list-unstyled ms-1">total clients: {{clients}}</li>
-            <li class="list-unstyled ms-1">active clients: {{active_clients}}</li>
-            <li class="list-unstyled ms-1">inactive clients: {{inactive_clients}}</li>
-        </div>
-
-        <div class="col-lg-3 mx-3 my-3 shadow bg-success p-3 rounded-2 text-white">
-            <h1>Onu Details</h1>
-            <li class="list-unstyled ms-1">total onu: {{total_onu}}</li>
-            <li class="list-unstyled ms-1">active onu: {{active_onu}}</li>
-            <li class="list-unstyled ms-1">stored onu: {{stored_onu}}</li>
-            <li class="list-unstyled ms-1">damaged onu: {{damaged_onu}}</li>
-        </div>
-
-        <div class="col-lg-3 mx-3 my-3 shadow bg-info p-3 rounded-2 text-white">
-            <H1>Employ details</H1>
-            <li class="list-unstyled ms-1">total Employ: {{total_employ}}</li>
-            <li class="list-unstyled ms-1">active Employ: {{active_employ}}</li>
-            <li class="list-unstyled ms-1">stored Employ: {{inactive_employ}}</li>
-        </div>
-        <div class="col-lg-3 mx-3 my-3 shadow bg-danger p-3 rounded-2 text-white">
-            <h1>Task Basket</h1>
-            <li class="list-unstyled ms-1">total basket: {{total_basket}}</li>
-            <li class="list-unstyled ms-1">pending basket: {{pending_basket}}</li>
-            <li class="list-unstyled ms-1">in progress basket: {{in_progress_basket}}</li>
-            <li class="list-unstyled ms-1">completed basket: {{completed_basket}}</li>
-        </div>
     </div>
-</section>
+
+    <div class="col-lg-3 mx-3 my-3 shadow bg-secondary p-3 rounded-2 text-white">
+        <h1>Billing Details</h1>
+        <li class="list-unstyled ms-1">total_bill: {{total_bill}}</li>
+        <li class="list-unstyled ms-1">earn_via_bill: {{earn_via_bill}}</li>
+        <li class="list-unstyled ms-1">up_steam_bill: {{up_steam_bill}}</li>
+    </div>
+
+    <div class="col-lg-3 mx-3 my-3 shadow bg-primary p-3 rounded-2 text-white">
+        <h1>Clients</h1>
+        <li class="list-unstyled ms-1">total clients: {{clients}}</li>
+        <li class="list-unstyled ms-1">active clients: {{active_clients}}</li>
+        <li class="list-unstyled ms-1">inactive clients: {{inactive_clients}}</li>
+    </div>
+
+    <div class="col-lg-3 mx-3 my-3 shadow bg-success p-3 rounded-2 text-white">
+        <h1>Onu Details</h1>
+        <li class="list-unstyled ms-1">total onu: {{total_onu}}</li>
+        <li class="list-unstyled ms-1">active onu: {{active_onu}}</li>
+        <li class="list-unstyled ms-1">stored onu: {{stored_onu}}</li>
+        <li class="list-unstyled ms-1">damaged onu: {{damaged_onu}}</li>
+    </div>
+
+    <div class="col-lg-3 mx-3 my-3 shadow bg-info p-3 rounded-2 text-white">
+        <H1>Employ details</H1>
+        <li class="list-unstyled ms-1">total Employ: {{total_employ}}</li>
+        <li class="list-unstyled ms-1">active Employ: {{active_employ}}</li>
+        <li class="list-unstyled ms-1">stored Employ: {{inactive_employ}}</li>
+    </div>
+    <div class="col-lg-3 mx-3 my-3 shadow bg-danger p-3 rounded-2 text-white">
+        <h1>Task Basket</h1>
+        <li class="list-unstyled ms-1">total basket: {{total_basket}}</li>
+        <li class="list-unstyled ms-1">pending basket: {{pending_basket}}</li>
+        <li class="list-unstyled ms-1">in progress basket: {{in_progress_basket}}</li>
+        <li class="list-unstyled ms-1">completed basket: {{completed_basket}}</li>
+    </div>
+</div>
 {% endblock %}

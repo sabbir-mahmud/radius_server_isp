@@ -71,7 +71,7 @@ class UserAdminCreationForm(forms.ModelForm):
   return user
 
 
-# useradminchangeform
+# user admin change form
 class UserAdminChangeForm(forms.ModelForm):
  password = ReadOnlyPasswordHashField()
 
@@ -84,3 +84,9 @@ class UserAdminChangeForm(forms.ModelForm):
   # This is done here, rather than on the field, because the
   # field does not have access to the initial value
   return self.initial["password"]
+
+# user update from
+class UserUpdateForm(forms.ModelForm):
+  class Meta:
+    model = User
+    fields = ['first_name','last_name','email', 'owner', 'employs']

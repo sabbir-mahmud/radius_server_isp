@@ -1,9 +1,26 @@
 # imports 
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, get_user_model, login, logout
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, render
+from django.views.generic import UpdateView, View
 
 from .decorator import auth_user
-from .forms import RegisterForm
+from .forms import RegisterForm, UserUpdateForm
+
+'''
+User Model
+
+'''
+User = get_user_model()
+
+class UsersView(View):
+  def get(self, request):
+    users = User.objects.all()
+    context = {
+      'users':users
+    }
+    return render(request, 'auth/users.html', context)
+
 
 '''
 Create User
@@ -15,6 +32,17 @@ def register(request):
   context = {'form':form}
   return render(request,'auth/createUser.html',context)
 
+'''
+Update User
+
+'''
+class UpdateUser(SuccessMessageMixin, UpdateView):
+  model = User
+  template_name = 'auth/user_form.html'
+  form_class = UserUpdateForm
+  success_url = '/users'
+  success_message = 'User updated successfully'
+  error_message = 'User not updated'
 
 '''
 login user

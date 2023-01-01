@@ -5,28 +5,30 @@
 {% endblock extraHead %}
 {% block content %}
 <section>
- <div class="row">
-  <div class="col-lg-2 ms-1 bg-dark text-white dashboard-navbar-wrapper">
-   <div class="dashboard-navbar">
-    <ul>
-     <li><a class="" href="{% url 'dashboard:dashboard' %}">{{profile.name}}</a></li>
-     <li><a href="{% url 'dashboard:invests' %}">invests</a></li>
-     <li><a href="{% url 'dashboard:earns' %}">earns</a></li>
-     <li><a href="{% url 'create-user' %}">create user</a></li>
-     <li><a href="{% url 'dashboard:owners' %}">patners</a></li>
-     <li><a href="{% url 'dashboard:employ' %}">employ</a></li>
-     <li><a href="{% url 'dashboard:employ_category' %}">employ categories</a></li>
-     <li><a href="{% url 'warehouse:category' %}">warehouse categories</a></li>
-     <li><a href="{% url 'tasks:tasks-category' %}">task categories</a></li>
-     <li><a href="{% url 'dashboard:profile-update' 1 %}">profile</a></li>
-     <li><a href="{% url 'dashboard:commission-update' 1 %}">commission</a></li>
-    </ul>
-   </div>
+    <div class="row">
+        <div class="col-lg-2 ms-1 bg-dark text-white dashboard-navbar-wrapper">
+            <div class="dashboard-navbar">
+                <ul>
+                    <li><a class="" href="{% url 'dashboard:dashboard' %}">{{profile.name}}</a></li>
+                    <li><a href="{% url 'dashboard:invests' %}">invests</a></li>
+                    <li><a href="{% url 'dashboard:earns' %}">earns</a></li>
+                    <li><a href="{% url 'user' %}">users</a></li>
+                    <li><a href="{% url 'dashboard:owners' %}">patners</a></li>
+                    <li><a href="{% url 'dashboard:employ' %}">employ</a></li>
+                    <li><a href="{% url 'dashboard:employ_category' %}">employ categories</a></li>
+                    <li><a href="{% url 'warehouse:category' %}">warehouse categories</a></li>
+                    <li><a href="{% url 'tasks:tasks-category' %}">task categories</a></li>
+                    <li><a href="{% url 'dashboard:profile-update' 1 %}">profile</a></li>
+                    <li><a href="{% url 'dashboard:commission-update' 1 %}">commission</a></li>
+                </ul>
+            </div>
 
-  </div>
-  <div class="col-lg-9 dashboard-wrapperr">
-   {% block dashboard %}{% endblock dashboard %}
-  </div>
- </div>
+        </div>
+        <div class="col-lg-9 dashboard-wrapperr">
+            <section class="profit-area ms-3 mt-2">
+                {% block dashboard %}{% endblock dashboard %}
+            </section>
+        </div>
+    </div>
 </section>
 {% endblock content %}
