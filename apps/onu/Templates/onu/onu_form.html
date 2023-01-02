@@ -1,10 +1,10 @@
-{% extends 'onu/onus.html' %}
+{% extends 'dashboard/baseDashboard.html' %}
 {% load crispy_forms_tags %}
 {% block title %}onu form{% endblock title %}
-{% block content %}
+{% block dashboard %}
 <form method="post">
  {% csrf_token %}
  {{ form|crispy }}
  <input class='btn btn-primary mt-3' type="submit" value="save">
 </form>
-{% endblock content %}
+{% endblock dashboard %}

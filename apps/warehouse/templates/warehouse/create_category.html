@@ -1,8 +1,8 @@
-{% extends 'warehouse/category.html' %}
+{% extends 'dashboard/baseDashboard.html' %}
 {% block title %}categories form{% endblock title %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block content %}
+{% block dashboard %}
 <section>
  <form method="post">
   {% csrf_token %}
@@ -11,4 +11,4 @@
  </form>
  
 </section>
-{% endblock content %}
+{% endblock dashboard %}
