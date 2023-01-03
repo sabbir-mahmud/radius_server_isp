@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% block title %}earn form{% endblock title %}
 {% block dashboard %}
+<h1>Earning Form</h1>
 <form method="post">
  {% csrf_token %}
  {{ form|crispy }}

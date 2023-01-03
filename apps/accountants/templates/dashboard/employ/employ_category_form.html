@@ -1,7 +1,8 @@
 {% extends 'dashboard/employ/employ.html' %}
 {% load crispy_forms_tags %}
-{% block title %}employ form{% endblock title %}
+{% block title %}employ category form{% endblock title %}
 {% block dashboard %}
+<h1>Employ Category Form</h1>
 <form method="post">
  {% csrf_token %}
  {{ form|crispy }}

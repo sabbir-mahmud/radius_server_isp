@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% block title %}invest form{% endblock title %}
 {% block dashboard %}
+<h1>Invest Form</h1>
 <form method="post">
  {% csrf_token %}
  {{ form|crispy }}
