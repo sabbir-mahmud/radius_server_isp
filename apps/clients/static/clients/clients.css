@@ -1,14 +1,14 @@
-form {
- margin-left: 3%;
+.form {
+    margin-left: 3.5%;
 }
 
-form input {
- width: 46%;
- margin-bottom: 1%;
+.form input {
+    width: 46%;
+    margin-bottom: 1%;
 }
 
-form select {
- margin-bottom: 1%;
- width: 46%;
- padding: 2px;
+.form select {
+    margin-bottom: 1%;
+    width: 46%;
+    padding: 2px;
 }

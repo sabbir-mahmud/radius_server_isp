@@ -1,13 +1,13 @@
-{% extends 'base.html' %}
-{% block title %}delete {{ object }}{% endblock title %}
-{% block content %}
+{% extends 'clients/clients.html' %}
+{% block title %}delete {{ object.name }}{% endblock title %}
+{% block dashboard %}
 
 <form class="delete-form" method="post">
  {% csrf_token %}
- <p>Are you sure you want to delete "{{ object }}"?</p>
+ <p>Are you sure you want to delete "{{ object.name }}"?</p>
  {{ form }}
  <input class="btn btn-primary" type="submit" value="Confirm">
  <a class="btn btn-primary" href="{% url 'client:clients' %}">Cancel</a>
 </form>
 
-{% endblock content %}
+{% endblock dashboard %}

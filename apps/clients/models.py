@@ -6,10 +6,8 @@ from apps.onu.models import Onu
 from apps.packages.models import Package
 from apps.pop.models import Pop
 
-# Create your models here.
 # clients models
 # internet user model
-
 
 class Clients(models.Model):
  choices_select = (('active', 'active'), ('inactive', 'inactive'))

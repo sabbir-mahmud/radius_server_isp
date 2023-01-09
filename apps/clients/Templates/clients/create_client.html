@@ -1,8 +1,9 @@
-{% extends 'dashboard/baseDashboard.html' %}
+{% extends 'clients/clients.html' %}
 {% load crispy_forms_tags %}
 {% block title %}clients form{% endblock title %}
 {% block dashboard %}
-<form method="post">
+<h3 class="ms-5">Clients Forms</h3>
+<form class="form" method="post">
  {% csrf_token %}
  {{ form|crispy }}
  <input class='btn btn-primary mt-3' type="submit" value="save">

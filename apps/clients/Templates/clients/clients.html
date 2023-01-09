@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'dashboard/baseDashboard.html' %}
 {% load static %}
 {% block title %}clients details{% endblock title %}
 {% block extraHead %}
 <link rel="stylesheet" href="{% static 'clients/clients.css' %}">
 {% endblock extraHead %}
-{% block content %}
-<table class="table table-striped table-hover rounded">
+{% block dashboard %}
+<table class="table table-striped table-hover ">
 
-  <thead class="table-dark">
+  <thead class="table-dark rounded">
     <tr>
       <th>
-        <a class='text-white' href={% url 'client:create' %}>Create</a>
+        <a class='text-white btn btn-primary' href={% url 'client:create' %}>Create</a>
       </th>
       <form class="mb-2 mt-3 mx-2" method="get">
         <th>
@@ -67,4 +67,4 @@
 {% endif %}
 
 
-{% endblock content %}
+{% endblock dashboard %}
