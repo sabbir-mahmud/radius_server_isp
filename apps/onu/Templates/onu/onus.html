@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'dashboard/baseDashboard.html' %}
 {% load static %}
 {% block title %}onus details{% endblock title %}
 {% block extraHead %}
 <link rel="stylesheet" href="{% static 'onus/onus.css' %}">
 {% endblock extraHead %}
-{% block content %}
+{% block dashboard %}
 <table class="table table-striped table-hover rounded">
 
   <thead class="table-dark">
     <tr>
       <th>
-        <a class='text-white' href={% url 'onu:create' %}>Create</a>
+        <a class='text-white btn btn-primary' href={% url 'onu:create' %}>Create</a>
       </th>
       <form class="mb-2 mt-3 mx-2" method="get">
         <th>
@@ -69,4 +69,4 @@
 {% endif %}
 
 
-{% endblock content %}
+{% endblock dashboard %}

@@ -4,11 +4,12 @@
 {% load static %}
 {% block dashboard %}
 <section>
- <form method="post">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <input class='btn btn-primary mt-3' type="submit" value="save">
- </form>
- 
+    <h3>warehouse forms</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class='btn btn-primary mt-3' type="submit" value="save">
+    </form>
+
 </section>
 {% endblock dashboard %}
