@@ -12,30 +12,16 @@
 
 <body>
     <div class="login-box">
-        <h2>Login</h2>
-        <form method="post">
+        <form class="login" method="post">
+            <h3>{{profile.name}}</h3>
             {% csrf_token %}
-            <div class="user-box">
-                <input type="email" name="email" required>
-                <label>Email</label>
-            </div>
-            <div class="user-box">
-                <input type="password" name="password" required>
-                <label>Password</label>
-            </div>
+            <input name="email" type="text" placeholder="Email">
+            <input name="password" type="password" placeholder="Password">
             {% if request.GET.next %}
             <input type="hidden" name="next" value="{{request.GET.next}}">
             {% endif %}
-            <button type="submit">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Submit
-            </button>
+            <button type="submit">Log in</button>
         </form>
     </div>
-
 </body>
-
 </html>
