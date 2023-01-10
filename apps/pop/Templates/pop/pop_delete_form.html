@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'dashboard/baseDashboard.html' %}
 {% block title %}delete {{ object }}{% endblock title %}
-{% block content %}
+{% block dashboard %}
 
 <form class="delete-form" method="post">
  {% csrf_token %}
@@ -9,5 +9,4 @@
  <input class="btn btn-primary" type="submit" value="Confirm">
  <a class="btn btn-primary" href="{% url 'pop:pop' %}">Cancel</a>
 </form>
-
-{% endblock content %}
+{% endblock dashboard %}

@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
 # pop models
 class Pop(models.Model):
  name = models.CharField(max_length=245)

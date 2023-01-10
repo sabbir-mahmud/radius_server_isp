@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'dashboard/baseDashboard.html' %}
 {% load static %}
 {% block title %}tasks details{% endblock title %}
 {% block extraHead %}
 <link rel="stylesheet" href="{% static 'tasks/tasks.css' %}">
 {% endblock extraHead %}
-{% block content %}
+{% block dashboard %}
 <table class="table table-striped table-hover rounded">
 
  <thead class="table-dark">
   <tr>
    <th>
-    <a class='text-white' href={% url 'tasks:create' %}>Create</a>
+    <a class='text-white btn btn-primary' href={% url 'tasks:create' %}>Create</a>
    </th>
    <form class="mb-2 mt-3 mx-2" method="get">
     <th>
@@ -67,4 +67,4 @@
 {% endif %}
 
 
-{% endblock content %}
+{% endblock dashboard %}
