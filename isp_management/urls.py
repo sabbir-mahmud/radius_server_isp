@@ -14,4 +14,5 @@ urlpatterns = [
     path('pops/', include('apps.pop.urls')),
     path('tasks/', include('apps.tasks.urls')),
     path('dashboard/', include('apps.accountants.urls')),
+    path('packages/', include('apps.packages.urls')),
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
