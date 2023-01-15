@@ -1,4 +1,5 @@
 # imports
+import os
 import pathlib
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
@@ -29,6 +30,7 @@ class UserManager(BaseUserManager):
   user = self.create_user(email, password)
   user.staff = True
   user.admin = True
+  user.owner = True
   user.save(using=self._db)
   return user
 
@@ -77,9 +79,10 @@ class User(AbstractBaseUser):
 
 # img rename
 def img_uploader(instance,filename):
-  fpath = pathlib.Path(filename)
-  new_fname = str(instance.user)
-  return f'profiles_img/{new_fname}{fpath.suffix}'
+  # fpath = pathlib.Path(filename)
+  # new_fname = str(instance.user)
+  # file
+  return os.path.join('profiles_img', instance.user.email,filename) 
 
 # Profile Model
 class Profile(models.Model):
