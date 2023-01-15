@@ -1,0 +1,35 @@
+{% extends 'dashboard/baseDashboard.html' %}
+{% load static %}
+{% block title %}profile: {{user_data.name}}{% endblock title %}
+{% block dashboard %}
+<style>
+    .img_wrapper {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        border-radius: 9px;
+    }
+
+    .profile {
+        display: flex;
+    }
+
+    .details {
+        margin-left: 20px;
+    }
+</style>
+<section>
+    <div class="profile">
+        <div class="img_wrapper">
+            <img class=" shadow-1-strong mb-4" src="{{user_data.img.url}}" alt="avatar" style="width: 150px;" />
+        </div>
+        <div class="details">
+            <h2 class="text-muted">{{user_data.name}}</h2>
+            {% if request.user.owner %} <h4 class="text-muted">Owner</h4> {% else %}<h4 class="text-muted"> Employ </h4>
+            {% endif %}
+        </div>
+    </div>
+
+
+</section>
+{% endblock %}

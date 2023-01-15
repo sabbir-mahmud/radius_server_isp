@@ -6,6 +6,7 @@ from django.views.generic import UpdateView, View
 
 from .decorator import auth_user
 from .forms import RegisterForm, UserUpdateForm
+from .models import Profile
 
 '''
 User Model
@@ -83,3 +84,16 @@ log out user
 def logoutView(request):
   logout(request)
   return redirect('/')
+
+'''
+profile view
+
+'''
+class ProfileView(View):
+  def get(self,request):
+    user = request.user.id
+    user_data = Profile.objects.get(user=user)
+    context = {
+      'user_data':user_data
+    }
+    return render(request, 'users/profile.html',context)
